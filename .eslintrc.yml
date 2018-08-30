@@ -3,3 +3,4 @@ env:
     browser: true
 rules:
     indent: off
+    no-new: off

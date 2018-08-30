@@ -1,11 +1,12 @@
 const { VueLoaderPlugin } = require('vue-loader');
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'development',
   watch: true,
   entry: [
-    './src/js/main.js',
+    './src/main.js',
   ],
   output: {
     path: path.resolve(__dirname, './public/'),
@@ -31,7 +32,22 @@ module.exports = {
       },
     ],
   },
+  devServer: {
+    historyApiFallback: true,
+    contentBase: path.join(__dirname, 'public'),
+    compress: true,
+    port: 8080,
+  },
+  resolve: {
+   alias: {
+     vue$: 'vue/dist/vue.esm.js',
+   },
+ },
   plugins: [
     new VueLoaderPlugin(),
+    new CopyWebpackPlugin([{
+      from: 'index.html',
+      to: '',
+    }]),
   ],
 };
