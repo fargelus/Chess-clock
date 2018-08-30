@@ -15,8 +15,8 @@
 }
 
 .toggler-mode-button {
-  height: 60px;
-  width: 50px;
+  height: 37px;
+  width: 65px;
 }
 
 .toggler-mode-button__part {
@@ -25,23 +25,25 @@
 }
 
 .toggler-mode-button__part--head {
-  border-radius: 2px;
+  background-color: #601018;
+  border-radius: 5px;
   height: 15px;
   width: 100%;
 }
 
 .toggler-mode-button__part--trunc {
+  background-color: #acacac;
   border-top: none;
   border-bottom: none;
-  height: 43px;
+  height: 20px;
   margin: auto;
   position: relative;
-  width: 26px;
+  width: 35px;
 }
 
 .chess-clock__frame {
-  border: 15px solid #4d4b4b;
-  border-radius: 5px;
+  border: 25px solid #601018;
+  border-radius: 15px;
   box-sizing: border-box;
   display: flex;
   height: 100%;
@@ -56,8 +58,21 @@
   justify-content: center;
   height: 100%;
   width: 50%;
+  position: relative;
 }
 
 .chess-clock__watch:nth-child(n + 2) {
   border-left: 2px solid black;
+}
+
+.chess-clock__stand {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chess-clock__stand-foot {
+  background-color: #601018;
+  border-radius: 3px;
+  height: 15px;
+  width: 58px;
 }
