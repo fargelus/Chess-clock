@@ -1,6 +1,6 @@
 <template>
   <div class="toggler-mode-button">
-    <div class="toggler-mode-button__part toggler-mode-button__part-head" @click="controlClick"></div>
+    <div class="toggler-mode-button__part toggler-mode-button__part-head" @click="pushed"></div>
     <div class="toggler-mode-button__part toggler-mode-button__part-trunc"></div>
   </div>
 </template>
@@ -8,12 +8,13 @@
 <script>
   export default {
     methods: {
-      controlClick: function(evt) {
+      pushed: function(evt) {
         const parentElem = evt.currentTarget.parentNode;
+
         parentElem.classList.toggle('toggler-mode-button--pushed');
 
         // Передаем обработку события родительскому компоненту
-        this.$emit('control-pushed');
+        this.$emit('control-pushed', parentElem);
       }
     }
   }

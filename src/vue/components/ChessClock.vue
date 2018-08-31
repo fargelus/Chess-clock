@@ -1,8 +1,8 @@
 <template>
   <section class="chess-clock">
     <div class="controls-buttons flex-around">
-      <TogglerModeButton/>
-      <TogglerModeButton id="second-player-control" v-on:control-pushed="toggleTimer"/>
+      <TogglerModeButton :id="firstControlID" v-on:control-pushed="controlPushed"/>
+      <TogglerModeButton :id="secondControlID" v-on:control-pushed="controlPushed"/>
     </div>
 
     <div class="chess-clock__frame">
@@ -20,11 +20,24 @@
 <script>
 import TogglerModeButton from './TogglerModeButton.vue';
 import Watch from './Watch.vue';
+import Settings from '../../js/settings';
 
 export default {
+  data() {
+    return {
+      firstControlID: Settings.firstPlayerId,
+      secondControlID: Settings.secondPlayerId
+    }
+  },
+
   methods: {
-    toggleTimer: function(evt) {
-      this.$emit('toggle-player');
+    controlPushed: function(currentControl) {
+      const pushedControlID = +currentControl.getAttribute('id'),
+            currentPlayerID = +this.$el.getAttribute('player');
+
+      if (currentPlayerID !== pushedControlID) {
+        this.$emit('toggle-player');
+      }
     }
   },
 
