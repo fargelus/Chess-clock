@@ -1,6 +1,5 @@
 import Vue from 'vue';
-// import routes from './routes';
-import './styles/all.scss';
+import '../styles/all.scss';
 import routes from './routes';
 
 

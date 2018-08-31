@@ -2,7 +2,7 @@
   <section class="chess-clock">
     <div class="controls-buttons flex-around">
       <TogglerModeButton/>
-      <TogglerModeButton/>
+      <TogglerModeButton id="second-player-control" v-on:control-pushed="toggleTimer"/>
     </div>
 
     <div class="chess-clock__frame">
@@ -22,6 +22,12 @@ import TogglerModeButton from './TogglerModeButton.vue';
 import Watch from './Watch.vue';
 
 export default {
+  methods: {
+    toggleTimer: function(evt) {
+      this.$emit('toggle-player');
+    }
+  },
+
   components: {
     TogglerModeButton,
     Watch
@@ -29,7 +35,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   @import "../../styles/all";
 
   .chess-clock {
