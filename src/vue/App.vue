@@ -2,7 +2,6 @@
   <ChessClock/>
 </template>
 
-
 <script>
 import ChessClock from './components/ChessClock.vue';
 

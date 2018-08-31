@@ -1,14 +1,9 @@
-<template lang="html">
+<template>
   <div class="toggler-mode-button">
     <div class="toggler-mode-button__part toggler-mode-button__part--head"></div>
     <div class="toggler-mode-button__part toggler-mode-button__part--trunc"></div>
   </div>
 </template>
-
-<script>
-export default {
-}
-</script>
 
 <style lang="scss">
   @import "../../styles/all";
