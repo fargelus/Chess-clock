@@ -10,7 +10,7 @@
 
   export default {
     methods: {
-      pushed: function(evt) {
+      pushed(evt) {
         const $parentElem = $(evt.currentTarget).parent();
 
         $parentElem.toggleClass('toggler-mode-button--pushed');

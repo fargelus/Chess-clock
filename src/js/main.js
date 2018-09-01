@@ -1,24 +1,10 @@
 import Vue from 'vue';
+import VueRouter from 'vue-router';
+import router from './router';
 import '../styles/all.scss';
-import routes from './routes';
 
+Vue.use(VueRouter);
 
 new Vue({
-  el: '#app',
-  data: {
-    currentRoute: window.location.pathname,
-  },
-
-  computed: {
-    ViewComponent() {
-      let pageToRender = routes[this.currentRoute];
-      if (!pageToRender) {
-        pageToRender = routes['/404'];
-      }
-
-      return pageToRender;
-    },
-  },
-
-  render(h) { return h(this.ViewComponent); },
-});
+  router,
+}).$mount('#app');

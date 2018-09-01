@@ -5,18 +5,20 @@
 <script>
 import ChessClock from './components/ChessClock.vue';
 import Settings from './../js/settings';
+import $ from 'jquery';
 
 export default {
   methods: {
-    setPlayer: function() {
+    setPlayer() {
       return this.currentPath === '/' ? Settings.firstPlayerId : Settings.secondPlayerId;
     },
 
-    togglePlayer: function () {
+    togglePlayer() {
       const newPath = this.paths.filter((path) => path !== this.currentPath)[0];
-      location.pathname = newPath;
+      this.$router.push(newPath);
     }
   },
+
   components: {
     ChessClock
   }
