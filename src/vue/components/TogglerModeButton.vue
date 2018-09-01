@@ -6,15 +6,17 @@
 </template>
 
 <script>
+  import $ from 'jquery';
+
   export default {
     methods: {
       pushed: function(evt) {
-        const parentElem = evt.currentTarget.parentNode;
+        const $parentElem = $(evt.currentTarget).parent();
 
-        parentElem.classList.toggle('toggler-mode-button--pushed');
+        $parentElem.toggleClass('toggler-mode-button--pushed');
 
         // Передаем обработку события родительскому компоненту
-        this.$emit('control-pushed', parentElem);
+        this.$emit('control-pushed', $parentElem);
       }
     }
   }

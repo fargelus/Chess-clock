@@ -1,9 +1,32 @@
 <template lang="html">
-  <div class="chess-clock__watch">00:00</div>
+  <div class="chess-clock__watch">{{ countdown_val }}</div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      countdown_val: '02:00'
+    };
+  },
+  methods: {
+    tick() {
+      const that = this;
+      let seconds = 120;
+      setInterval(() => {
+        seconds -= 1;
+        that.convertSecondsToCountdown(seconds);
+      }, 1000)
+    },
+
+    convertSecondsToCountdown(seconds) {
+      const secondsPerMin = 60;
+      const minsToRender = Math.floor(seconds / secondsPerMin);
+      const secondsToRender = seconds % secondsPerMin;
+
+      this.countdown_val = '0' + minsToRender + ':' + secondsToRender;
+    }
+  }
 }
 </script>
 

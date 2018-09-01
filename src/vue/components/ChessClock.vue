@@ -6,8 +6,8 @@
     </div>
 
     <div class="chess-clock__frame">
-      <Watch/>
-      <Watch/>
+      <Watch ref="firstWatch"/>
+      <Watch ref="secondWatch"/>
     </div>
 
     <div class="chess-clock__stand flex-around">
@@ -21,8 +21,22 @@
 import TogglerModeButton from './TogglerModeButton.vue';
 import Watch from './Watch.vue';
 import Settings from '../../js/settings';
+import $ from 'jquery';
 
 export default {
+  mounted() {
+    this.$nextTick(function () {
+      const currentPlayerID = $(this.$el).attr('player');
+      $('#' + currentPlayerID).addClass('toggler-mode-button--pushed');
+
+      if (+currentPlayerID === Settings.firstPlayerId) {
+        this.$refs.firstWatch.tick();
+      } else {
+        this.$refs.secondWatch.tick();
+      }
+    });
+  },
+
   data() {
     return {
       firstControlID: Settings.firstPlayerId,
@@ -31,9 +45,9 @@ export default {
   },
 
   methods: {
-    controlPushed: function(currentControl) {
-      const pushedControlID = +currentControl.getAttribute('id'),
-            currentPlayerID = +this.$el.getAttribute('player');
+    controlPushed: function($currentControl) {
+      const pushedControlID = +$currentControl.attr('id'),
+            currentPlayerID = +$(this.$el).attr('player');
 
       if (currentPlayerID !== pushedControlID) {
         this.$emit('toggle-player');
