@@ -28,7 +28,7 @@ export default {
       };
 
       // Промисифицируем, чтобы
-      // не было задержки вначале отсчета
+      // не было задержки в начале отсчета
       new Promise(resolve => setTimeout(() => {
         countdown();
         resolve();
