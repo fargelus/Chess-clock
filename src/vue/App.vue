@@ -14,6 +14,7 @@ export default {
     },
 
     togglePlayer() {
+      // При условии, что игроков 2
       const newPath = this.paths.filter((path) => path !== this.currentPath)[0];
       this.$router.push(newPath);
     }

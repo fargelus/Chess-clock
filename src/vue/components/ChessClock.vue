@@ -71,9 +71,9 @@ export default {
 
         // Сохраним оставшиеся значение секунд с таймера
         if (currentPlayerID === Settings.firstPlayerId) {
-          Settings.firstPlayerTimerVal = secondsLeft;
+          Settings.firstPlayerTimer = secondsLeft;
         } else {
-          Settings.secondPlayerTimerVal = secondsLeft;
+          Settings.secondPlayerTimer = secondsLeft;
         }
 
         this.$emit('toggle-player');

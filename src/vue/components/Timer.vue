@@ -64,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
   .chess-clock__watch {
     align-items: center;
     display: flex;
