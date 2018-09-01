@@ -13,16 +13,29 @@ export default {
     tick() {
       const that = this;
       let seconds = 120;
-      setInterval(() => {
+
+      const countdown = () => {
+        if (seconds === 0) {
+          return;
+        }
+
         seconds -= 1;
-        that.convertSecondsToCountdown(seconds);
-      }, 1000)
+        that.renderTimer(seconds);
+      };
+
+      Promise.resolve(() => {
+          setTimeout(countdown, 500);
+      }).then(() => {
+        setInterval(countdown, 1000);
+      });
     },
 
-    convertSecondsToCountdown(seconds) {
-      const secondsPerMin = 60;
-      const minsToRender = Math.floor(seconds / secondsPerMin);
-      const secondsToRender = seconds % secondsPerMin;
+    renderTimer(seconds) {
+      const secondsPerMin = 60,
+            minsToRender = Math.floor(seconds / secondsPerMin),
+            secondsLeft = seconds % secondsPerMin,
+            secondsToRender = `${secondsLeft}`.length === 2 ? `${secondsLeft}`
+                                                          : `0${secondsLeft}`;
 
       this.countdown_val = '0' + minsToRender + ':' + secondsToRender;
     }
